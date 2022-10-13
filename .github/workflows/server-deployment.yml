@@ -11,6 +11,7 @@ jobs:
     steps:
     - name: Checkout repository main branch
       uses: actions/checkout@v2
+    - name: List contents
       run: |
         # multi-line commands are OK apparently
         echo "List the contents of the directory"
