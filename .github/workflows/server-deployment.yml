@@ -11,10 +11,12 @@ jobs:
     steps:
     - name: Checkout repository main branch
       uses: actions/checkout@v2
-    - name: List contents
-      run: |
-        # multi-line commands are OK apparently
-        echo "List the contents of the directory"
-        ls
-    - name: Say Hello!
-      run: echo "Hello there!"
+    - name: rsync deployments
+      uses: burnett01/rsync-deployments@5.2.1
+      with:
+        switches: -avzr --delete
+        path: ./*.html
+        remote_path: www/staging/avm/
+        remote_host: ${{secrets.WEBSERVER_ADDRESS}}
+        remote_user: ${{secrets.SSH_USER}}
+        remote_key_pass: ${{secrets.SSH_PASS}}
