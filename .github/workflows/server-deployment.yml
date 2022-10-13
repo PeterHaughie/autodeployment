@@ -8,7 +8,5 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the branch
-      uses: actions/checkout@v2
     - name: Say Hello!
       run: echo "Hello there!"
