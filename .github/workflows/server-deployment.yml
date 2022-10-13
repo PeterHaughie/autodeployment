@@ -9,8 +9,11 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout repository main branch
     - uses: actions/checkout@v2
-      run: echo "List the contents of the directory"
-      run: ls
+      run: |
+        # multi-line commands are OK apparently
+        echo "List the contents of the directory"
+        ls
     - name: Say Hello!
       run: echo "Hello there!"
