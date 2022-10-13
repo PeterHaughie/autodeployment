@@ -10,5 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      run: echo "List the contents of the directory"
+      run: ls
     - name: Say Hello!
       run: echo "Hello there!"
