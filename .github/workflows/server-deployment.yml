@@ -11,11 +11,15 @@ jobs:
     steps:
     - name: Checkout repository main branch
       uses: actions/checkout@v2
+    - name: Delete me
+      run: |
+        echo ${{secrest.WEBSERVER_ADDRESS}}
+        echo ${{secrets.SSH_USER}}
     - name: rsync deployments
       uses: burnett01/rsync-deployments@5.2.1
       with:
         switches: -avzr --delete
-        path: ./*.html
+        path: .
         remote_path: www/staging/avm/
         remote_host: ${{secrets.WEBSERVER_ADDRESS}}
         remote_user: ${{secrets.SSH_USER}}
