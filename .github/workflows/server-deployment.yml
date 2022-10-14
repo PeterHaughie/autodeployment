@@ -14,5 +14,5 @@ jobs:
     - name: curl deployment
       uses: wei/curl@v1
       with:
-        args: --username ${{secrets.SSH_USER}}:${{secrets.SSH_PASS}} -T test.html 
+        args: --user ${{secrets.SSH_USER}}:${{secrets.SSH_PASS}} -T test.html 
 sftp://${{secrets.WEBSERVER_ADDRESS}}/www/staging/avm/
