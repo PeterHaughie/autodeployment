@@ -11,16 +11,8 @@ jobs:
     steps:
     - name: Checkout repository main branch
       uses: actions/checkout@v2
-    - name: Delete me
-      run: |
-        echo ${{secrets.WEBSERVER_ADDRESS}}
-        echo ${{secrets.SSH_USER}}
-    - name: rsync deployments
-      uses: burnett01/rsync-deployments@5.2.1
+    - name: curl deployment
+      uses: wei/curl@v1
       with:
-        switches: -avzr --delete
-        path: .
-        remote_path: www/staging/avm/
-        remote_host: ${{secrets.WEBSERVER_ADDRESS}}
-        remote_user: ${{secrets.SSH_USER}}
-        remote_key_pass: ${{secrets.SSH_PASS}}
+        args: --username ${{secrets.SSH_USER}}:${{secrets.SSH_PASS}} -T test.html 
+sftp://${{secrets.WEBSERVER_ADDRESS}}/www/staging/avm/
